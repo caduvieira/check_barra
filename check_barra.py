@@ -41,8 +41,13 @@ with open('sites.txt', 'rU') as f:
                     nada.flush()
                     driver.save_screenshot("screenshots_nada/site-"+lsplit+".png")
         except Exception as e:
-            error.write('%s' % str(e) +'\n')
+            error.write('%s' % str(e))
+            try:
+                driver.save_screenshot("screenshots_error/site-"+lsplit+".png")
+            except:
+                error.write(' Não foi possível salvar screenshot de %s' % url)
+                pass
+            error.write('\n')
             error.flush()
-            driver.save_screenshot("screenshots_error/site-"+lsplit+".png")
             pass
     driver.close()
