@@ -1,14 +1,14 @@
 from selenium import webdriver
-import httplib
+import http.client
 import os.path
 from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import WebDriverException
 
 driver = webdriver.Firefox(executable_path=r'./geckodriver')
-com = open('sites_dinamica.txt', 'wa')
-sem = open('sites_nao_dinamica.txt', 'wa')
-nada = open('sites_nada.txt', 'wa')
-error = open('sites_error.txt', 'wa')
+com = open('sites_dinamica.txt', 'a')
+sem = open('sites_nao_dinamica.txt', 'a')
+nada = open('sites_nada.txt', 'a')
+error = open('sites_error.txt', 'a')
 driver.set_page_load_timeout(300)
 
 if not os.path.exists("screenshots_dinamica"):
@@ -20,11 +20,11 @@ if not os.path.exists("screenshots_nada"):
 if not os.path.exists("screenshots_error"):
     os.makedirs("screenshots_error")
 
-with open('sites.txt', 'rU') as f:
+with open('sites.txt', 'r', encoding="ISO-8859-1") as f:
     for line in f:
         lsplit = line.split(';')[0]
         url = 'http://www.'+lsplit+'/'
-        print url
+        print(url)
         try:
             driver.get(url)
             if ("barra.brasil.gov.br/barra.js" in driver.page_source):
