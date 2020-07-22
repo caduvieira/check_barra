@@ -14,4 +14,6 @@ python check_site.py  - Tira um printscreen dos sites do governo e cria lista co
 
 python check_barra.py - Checa se a barra brasil está presente e se está de forma dinâmica ou não.
 
+# Atenção
 
+Esse programa só checa os subdomínios 'www' e não percorre todos os subdomínios de um domínio
