@@ -1,3 +1,4 @@
+__pycache__/
 geckodriver*
 screenshots*
 sites_*
